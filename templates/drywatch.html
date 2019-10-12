@@ -365,14 +365,17 @@
             <i class='glyphicon glyphicon-search'></i>
             Search
           </a>
-
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='btn btn-default' id='reset' onclick='document.getElementById("search_address").value=""; document.getElementById("search_address2").value=""' href='#'>
+              <i class='glyphicon glyphicon-repeat'></i>
+              Reset
+          </a>
         </div>
       </div>
 
-      <div class='col-md-4' style="float:center";>
+      <div class='col-md-4' style="float:center; text-align:center;">
           <div class='well'>
             <h2 id='droughtChance'>
-              To get chance of drought over next 2 months, please select location!
+              To get chance of drought over next 2 months, please search for a location!
             </h2>
         </div>
       </div>
@@ -385,9 +388,11 @@
           </h4>
           <a class='btn btn-primary' id='res' onclick='info(1)' href='#'>
             Residential 
-          </a> <a class='btn btn-primary' id='agri' onclick='info(2)' href='#'>
+          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+          <a class='btn btn-primary' id='agri' onclick='info(2)' href='#'>
             Agricultural
-          </a> <a class='btn btn-primary' id='gov' onclick='info(3)' href='#'>
+          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a class='btn btn-primary' id='gov' onclick='info(3)' href='#'>
             Governmental
           </a>
           <b></b>
