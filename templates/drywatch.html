@@ -243,6 +243,12 @@
   </script>
 
   <script>
+
+  function info(n){
+
+  } 
+
+
   var add1
   var add2
   function alert() {
@@ -333,14 +339,16 @@
           <h4>
             What kind of information are you looking for?
           </h4>
-          <a class='btn btn-primary' id='res' onclick='' href='#'>
-            Residential
-          </a> <a class='btn btn-primary' id='agri' onclick='' href='#'>
+          <a class='btn btn-primary' id='res' onclick='info(1)' href='#'>
+            Residential 
+          </a> <a class='btn btn-primary' id='agri' onclick='info(2)' href='#'>
             Agricultural
-          </a> <a class='btn btn-primary' id='gov' onclick='' href='#'>
+          </a> <a class='btn btn-primary' id='gov' onclick='info(3)' href='#'>
             Governmental
           </a>
-
+          <div id='infoBox'>
+            Hello There!
+          </div>
         </div>
       </div>
 
