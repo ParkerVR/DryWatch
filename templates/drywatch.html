@@ -246,7 +246,7 @@
 
   var add1
   var add2
-
+  var danger = -1;
   function info(n){
     if (n == 1)
       document.getElementById("infoBoxInfo").innerHTML = "RES";
@@ -288,11 +288,33 @@
       }
       var marker = L.marker(latlngs[0]);
       marker.addTo(map);
-      if(latlngs[0][1]<0) {
-        document.getElementById("droughtChance").innerHTML = "1000%";
+      if(latlngs[0][0]>40) {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 10%";
+        danger = 0;
+      } 
+      else if(latlngs[0][1]<-110 ) {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 15%";
+        danger = 0;
       }
-      else if(latlngs[0][1]>0) {
-        document.getElementById("droughtChance").innerHTML = "0%";
+      else if(latlngs[0][1]<-100) {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 35%";
+        danger = 1;
+      }
+      else if(latlngs[0][1]<-90) {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 85%";
+        danger = 2;
+      }
+      else if(latlngs[0][1]<-85) {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 60%";
+        danger = 1;
+      }
+      else if(latlngs[0][0]>35) {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 25%";
+        danger = 0;
+      }
+      else {
+        document.getElementById("droughtChance").innerHTML = "The chance of drought over the next two months is 70%";
+        danger = 2;
       }
       //var marker2 = L.marker(latlngs[data4.route.length-1 ]);
       //marker2.addTo(map);
