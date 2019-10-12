@@ -359,22 +359,23 @@
           </a>
         </div>
       </div>
-    <div id="map"></div>
+    <div "style=float:right;">
+    <div id="map" style="width: 800px; height: 400px;">
 
 
     <script>
         var map = L.map('map', {
             center: [42.32, -71.08], // Boston, MA
-            zoom: 13
+            zoom: 4
         });
 
-        var defaultBase = L.tileLayer.provider('Stamen.TonerLite').addTo(map);
+        var defaultBase = L.tileLayer.provider('Esri.WorldImagery').addTo(map);
 
         var baseLayers = {
-            'Stamen Toner': defaultBase,
-            'USGS TNM': L.tileLayer.provider('USGSTNM'),
-            'ESRI Imagery': L.tileLayer.provider('Esri.WorldImagery'),
+            'ESRI Imagery': L.tileLayer.provider(defaultBase),
             'ESRI Ocean Basemap': L.tileLayer.provider('Esri.OceanBasemap'),
+            'Stamen Toner': L.tileLayer.provider('Stamen.TonerLite'),
+            'USGS TNM': L.tileLayer.provider('USGSTNM'),
             'OSM Topo': L.tileLayer.provider('OpenTopoMap')
         };
 
@@ -506,7 +507,8 @@
         //Logo position: bottomright
 
     </script>
-
+    </div></div>
+  
   <!--<script>
   var add1 = document.getElementbyID("search_address").value);
   var add2 = document.getElementbyID("search_address2").value);
