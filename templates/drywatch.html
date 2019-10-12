@@ -247,12 +247,47 @@
   var add2
   function alert() {
     add1 = (document.getElementById("search_address").value);
+
     //add2 = (document.getElementById("search_address2").value);
-    //backend(add1);
-    
+    backend(add1);
+
   }
   </script>
 
+  <script>
+  var directions1 = []
+  function backend(add1) {
+    var request = new XMLHttpRequest();
+    var add3 = add1.split(' ').join('+');
+    //var add4 = add2.split(' ').join('+');
+    var add5 = add3.replace(/,/g,"");
+    //var add6 = add4.replace(/,/g,"");
+    var url = "http://bikeable.tech/routing/?origin=".concat(add5);
+    console.log(url);
+    var marker = L.marker(add1);
+    marker.addTo(map);
+    /*
+    request.open('GET', url, true);
+    request.responseType= 'json';
+    request.send();
+    request.onload = function () {
+      var data4 = request.response;
+      var marker = L.marker(add1);
+      marker.addTo(map);
+      var marker2 = L.marker(latlngs[data4.route.length-1 ]);
+      marker2.addTo(map);
+      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+        map.fitBounds(polyline.getBounds());
+      console.log(latlngs)
+      console.log(data4);
+      console.log(directions1)
+      directions1 = directions1.join(" <br> ")
+      document.getElementById("modalDirect").innerHTML = directions1;
+      request.send();
+  //$("#search").click(back);
+    };*/
+  }
+  </script>
 
 
   <div class='navbar navbar-default navbar-static-top' >
