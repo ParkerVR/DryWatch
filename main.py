@@ -32,7 +32,7 @@ GEOCODING_KEY = "AIzaSyAXU-NQ4vA2RHiz2x3L7tO6Ay3fbgT0-90"
 
 @app.route('/')
 def index():
-    response = render_template('bikeable.html')
+    response = render_template('drywatch.html')
     return response
 
 @app.route('/bikeTheft.html')
