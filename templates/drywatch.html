@@ -261,6 +261,12 @@
     add1 = (document.getElementById("search_address").value);
     add2 = (document.getElementById("search_address").value);
     backend(add1,add2);
+    if(add1[1]<0) {
+      document.getElementById("droughtChance").innerHTML = "1000%";
+    }
+    else if(add1[1]>0) {
+      document.getElementById("droughtChance").innerHTML = "0%";
+    }
   }
   </script>
 
