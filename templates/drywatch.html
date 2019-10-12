@@ -312,7 +312,7 @@
   <div class='container-fluid'>
     <div class='row'>
       <p class="line-1 anim-typewriter">Drought Prediction and Preparation Tool</p>
-      <div class='col-md-4' style="float:right";>
+      <div class='col-md-4' style="float:left";>
         <div class='well'>
           <h4>
             Origin
@@ -359,13 +359,12 @@
           </a>
         </div>
       </div>
-    <div id="map"></div>
-
+    <div id="map" style="float:right";></div>
 
     <script>
         var map = L.map('map', {
             center: [37.0902, -95.7129], // US
-            zoom: 2
+            zoom: 5
         });
 
         var defaultBase = L.tileLayer.provider('Esri.WorldImagery').addTo(map);
