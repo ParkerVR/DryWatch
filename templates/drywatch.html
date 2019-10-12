@@ -248,7 +248,7 @@
   function alert() {
     add1 = (document.getElementById("search_address").value);
     add2 = (document.getElementById("search_address2").value);
-    backend(add1,add2);
+    backend(add1,add1);
   }
   </script>
 
@@ -275,10 +275,10 @@
       }
       var marker = L.marker(latlngs[0]);
       marker.addTo(map);
-      var marker2 = L.marker(latlngs[data4.route.length-1 ]);
-      marker2.addTo(map);
-      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-        map.fitBounds(polyline.getBounds());
+      //var marker2 = L.marker(latlngs[data4.route.length-1 ]);
+      //marker2.addTo(map);
+      //var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+        //map.fitBounds(polyline.getBounds());
       console.log(latlngs)
       console.log(data4);
       console.log(directions1)
@@ -360,12 +360,12 @@
         </div>
       </div>
     <div "style=float:right;">
-    <div id="map" style="width: 800px; height: 400px;">
+    <div id="map" style="width: 800px; height: 600px;">
 
 
     <script>
         var map = L.map('map', {
-            center: [42.32, -71.08], // Boston, MA
+            center: [36.7783, -119.4179], // California
             zoom: 4
         });
 
