@@ -244,13 +244,19 @@
 
   <script>
 
+  var add1
+  var add2
+
   function info(n){
-    document.getElementById("infoBoxInfo").innerHTML = "UWU";
+    if (n == 1)
+      document.getElementById("infoBoxInfo").innerHTML = "RES";
+    if (n == 2)
+      document.getElementById("infoBoxInfo").innerHTML = "FARM";
+    if (n == 3)
+      document.getElementById("infoBoxInfo").innerHTML = "GOV";
   } 
 
 
-  var add1
-  var add2
   function alert() {
     add1 = (document.getElementById("search_address").value);
     add2 = (document.getElementById("search_address").value);
@@ -347,9 +353,9 @@
             Governmental
           </a>
           <b></b>
-          <div id='infoBox' margin-top="35px">
+          <div id='infoBox' padding-top="100px">
             <p id='infoBoxInfo'>
-                Hello There!
+                
             </p>
           </div>
         </div>
