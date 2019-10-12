@@ -249,7 +249,7 @@
   var danger = -1;
   function info(n){
 
-    if (n == 1) // res
+    if (n == 1) { // res
       if (danger == -1)
         document.getElementById("infoBoxInfo").innerHTML = "Please enter a location.";
       if (danger == 0)
@@ -258,8 +258,8 @@
         document.getElementById("infoBoxInfo").innerHTML = "Reduce water in garden irrigation systems, and be conscious of water usage.";
       if (danger == 2)
         document.getElementById("infoBoxInfo").innerHTML = "Limit non-essential water usage. Drought imminent.";
-
-    if (n == 2) // farm 
+    }
+    if (n == 2) { // farm 
       if (danger == -1)
         document.getElementById("infoBoxInfo").innerHTML = "Please enter a location.";
       if (danger == 0)
@@ -268,8 +268,8 @@
         document.getElementById("infoBoxInfo").innerHTML = "Prepare for potential implementation of local drought response and mandatory water restrictions.";
       if (danger == 2)
         document.getElementById("infoBoxInfo").innerHTML = "Implement conditioning of agriculture to survival in low water resource conditions, and limit non-essential water usage. Drought imminent.";
-
-    if (n == 3) // gov 
+    }
+    if (n == 3) {// gov 
       if (danger == -1)
         document.getElementById("infoBoxInfo").innerHTML = "Please enter a location.";
       if (danger == 0)
@@ -278,7 +278,7 @@
         document.getElementById("infoBoxInfo").innerHTML = "Increase communication with public on drought conditions.";
       if (danger == 2)
         document.getElementById("infoBoxInfo").innerHTML = "Implement local drought response plan. Drought imminent.";
-
+    }
   } 
 
 
@@ -394,7 +394,7 @@
       </div>
 
       <div class='col-md-4' style="float:center; text-align:center;">
-          <div class='well'>
+          <div class='well' padding:"10">
             <h2 id='droughtChance'>
               To get chance of drought over next 2 months, please search for a location!
             </h2>
