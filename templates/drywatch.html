@@ -261,12 +261,7 @@
     add1 = (document.getElementById("search_address").value);
     add2 = (document.getElementById("search_address").value);
     backend(add1,add2);
-    if(add1[1]<0) {
-      document.getElementById("droughtChance").innerHTML = "1000%";
-    }
-    else if(add1[1]>0) {
-      document.getElementById("droughtChance").innerHTML = "0%";
-    }
+
   }
   </script>
 
@@ -293,6 +288,12 @@
       }
       var marker = L.marker(latlngs[0]);
       marker.addTo(map);
+      if(latlngs[0][1]<0) {
+        document.getElementById("droughtChance").innerHTML = "1000%";
+      }
+      else if(latlngs[0][1]>0) {
+        document.getElementById("droughtChance").innerHTML = "0%";
+      }
       //var marker2 = L.marker(latlngs[data4.route.length-1 ]);
       //marker2.addTo(map);
       //var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
