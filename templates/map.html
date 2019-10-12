@@ -1,19 +1,152 @@
 <html>
-<head>
-	
-	<title>Quick Start - Leaflet</title>
-
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
-	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
-
-
-	
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/static/css/leaflet-routing-machine.css" />
+        <!-- Load Leaflet: http://leafletjs.com/ -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
+    
+        <!-- Esri Leaflet Plugin: https://esri.github.io/esri-leaflet/ -->
+        <script src="https://unpkg.com/esri-leaflet@2.1.3/dist/esri-leaflet.js" integrity="sha512-pijLQd2FbV/7+Jwa86Mk3ACxnasfIMzJRrIlVQsuPKPCfUBCDMDUoLiBQRg7dAQY6D1rkmCcR8286hVTn/wlIg==" crossorigin=""></script>
+    
+        <!-- ESRI Renderer Plugin: https://github.com/Esri/esri-leaflet-renderers -->
+        <!-- Renders feature layer using default symbology as defined by ArcGIS REST service -->
+        <!-- Currently doesn't work with ESRI cluster plugin -->
+        <script src="https://unpkg.com/esri-leaflet-renderers@2.0.6/dist/esri-leaflet-renderers.js" integrity="sha512-mhpdD3igvv7A/84hueuHzV0NIKFHmp2IvWnY5tIdtAHkHF36yySdstEVI11JZCmSY4TCvOkgEoW+zcV/rUfo0A==" crossorigin=""></script>
+    
+        <!-- Load Leaflet Basemap Providers: https://github.com/leaflet-extras/leaflet-providers -->
+        <!-- Modified to include USGS TNM web services -->
+        <script src="/static/js/leaflet-providers.js"></script>
+    
+        <!-- 2.5D OSM Buildings Classic: https://github.com/kekscom/osmbuildings -->
+        <script src="https://cdn.osmbuildings.org/OSMBuildings-Leaflet.js"></script>
+    
+        <!-- Load Font Awesome icons -->
+        <script src="https://use.fontawesome.com/a64989e3a8.js"></script>
+    
+        <!-- Grouped Layer Plugin: https://github.com/ismyrnow/leaflet-groupedlayercontrol  -->
+        <script src="/static/js/leaflet.groupedlayercontrol.min.js" type="text/javascript"></script>
+    
+        <!-- Overview mini map Plugin: https://github.com/Norkart/Leaflet-MiniMap -->
+        <script src="/static/js/Control.MiniMap.min.js" type="text/javascript"></script>
+    
+        <!-- Leaflet Drawing Plugin: https://github.com/codeofsumit/leaflet.pm -->
+        <!---<link rel="stylesheet" href="https://unpkg.com/leaflet.pm@latest/dist/leaflet.pm.css">
+        <script src="https://unpkg.com/leaflet.pm@latest/dist/leaflet.pm.min.js"></script>
+    -->
+        <!-- Leaflet WMS Plugin: https://github.com/heigeo/leaflet.wms -->
+        <script src="/static/js/leaflet.wms.js"></script>
+    
+        <!-- Logo Credit Plugin: https://github.com/gregallensworth/L.Control.Credits -->
+        <script type="text/javascript" src="/static/js/leaflet-control-credits.js"></script>
+        <style>
+        body {
+          background-color: black;
+        }
+        @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+        .line-1{
+        position: relative;
+        top: 50%;
+        width: 24em;
+        margin: 0 auto;
+        border-right: 2px solid rgba(255,255,255,.75);
+        font-size: 180%;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        transform: translateY(-50%);
+    }
+    
+    /* Animation */
+    .anim-typewriter{
+      animation: typewriter 4s steps(44) 1s 1 normal both,
+                 blinkTextCursor 500ms steps(44) infinite normal;
+    }
+    @keyframes typewriter{
+      from{width: 0;}
+      to{width: 24em;}
+    }
+    @keyframes blinkTextCursor{
+      from{border-right-color: rgba(255,255,255,1);}
+      to{border-right-color: transparent;}
+    }
+            #map {
+                width: 67%;
+                height: 88%;
+                position: fixed;
+                bottom: 0;
+                .slidecontainer {
+          width: 100%;
+        }
+        .bottomright {
+          position: absolute;
+          bottom: 30px;
+          right: 30px;
+          font-size: 40px;
+    }
+    
+        .slider {
+          -webkit-appearance: none;
+          width: 100%;
+          height: 10px;
+          border-radius: 5px;
+          background: #d3d3d3;
+          outline: none;
+          opacity: 0.7;
+          -webkit-transition: .2s;
+          transition: opacity .2s;
+        }
+    
+        .slider:hover {
+          opacity: 1;
+        }
+    
+        .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 23px;
+          height: 24px;
+          border: 0;
+          background: url('/static/images/wheel.png');
+          cursor: pointer;
+        }
+    
+        .slider::-moz-range-thumb {
+          width: 23px;
+          height: 24px;
+          border: 0;
+          background: url('static/images/wheel.png');
+          cursor: pointer;
+        }
+            }
+    
+        </style>
+    
+        <meta name="keywords" content="locateUser" />
+        <link rel="icon" href="static/images/favicon.png">
+        <title>DryWatch</title>
+        <!-- Set up constants such as APP ID and token -->
+        <script type="text/javascript" src="/static/libs/hereAppIdAndToken.js"></script>
+        <link rel="stylesheet" href="static/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="static/css/custom.css"/>
+        <!-- Bootstrap jQuery Library -->
+        <script type="text/javascript" src="static/libs/jQl.min.js"></script>
+    
+        <!-- Asynchronously the HERE Maps API for JavaScript -->
+        <script type="text/javascript" src="static/libs/hereAsyncLoader.js"
+          id="HereMapsLoaderScript"
+          data-params="maps"
+          data-map-container="mapContainer"
+          data-callback="locateUser" >
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXU-NQ4vA2RHiz2x3L7tO6Ay3fbgT0-90&libraries=places"></script>
+        <!--<link href="http://developer.here.com/html/css/main.css" rel="stylesheet" />-->
+    
+    </head>
 <body>
 
 <div id="map" style="width: 600px; height: 400px;";>
