@@ -247,48 +247,13 @@
   var add2
   function alert() {
     add1 = (document.getElementById("search_address").value);
-    add2 = (document.getElementById("search_address2").value);
-    backend(add1,add2);
+    //add2 = (document.getElementById("search_address2").value);
+    //backend(add1);
+    
   }
   </script>
 
-  <script>
-  var directions1 = []
-  function backend(add1,add2) {
-    var request = new XMLHttpRequest();
-    var add3 = add1.split(' ').join('+');
-    var add4 = add2.split(' ').join('+');
-    var add5 = add3.replace(/,/g,"");
-    var add6 = add4.replace(/,/g,"");
-    var url = "drywatch.appspot.com/routing/?origin=".concat(add5,'&dest=',add6 );
-    console.log(url);
-    request.open('GET', url, true);
-    request.responseType= 'json';
-    request.send();
-    request.onload = function () {
-      var data4 = request.response;
-      var i;
-      var latlngs = [];
-      for (i = 0; i < data4.route.length; i++) {
-        latlngs.push(data4.route[i]);
-        directions1.push(data4.directions[i])
-      }
-      var marker = L.marker(latlngs[0]);
-      marker.addTo(map);
-      var marker2 = L.marker(latlngs[data4.route.length-1 ]);
-      marker2.addTo(map);
-      var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-        map.fitBounds(polyline.getBounds());
-      console.log(latlngs)
-      console.log(data4);
-      console.log(directions1)
-      directions1 = directions1.join(" <br> ")
-      document.getElementById("modalDirect").innerHTML = directions1;
-      request.send();
-  //$("#search").click(back);
-};
-}
-</script>
+
 
   <div class='navbar navbar-default navbar-static-top' >
     <div class='container-fluid'>
@@ -315,29 +280,17 @@
       <div class='col-md-4'>
         <div class='well'>
           <h4>
-            Origin
+            Location
           </h4>
           <p>
             <input class='form-control' id="search_address" placeholder='Enter an address or an intersection' type='text' />
           </p>
           <br />
-          <h4>
-            Destination
-          </h4>
-          <p>
-            <input class='form-control' id='search_address2' placeholder='Enter an address or an intersection' type='text' />
-          </p>
         </br>
           <a class='btn btn-primary' id='search' onclick='alert()' href='#'>
             <i class='glyphicon glyphicon-search'></i>
             Search
           </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='btn btn-default' id='reset' onclick='document.getElementById("search_address").value=""; document.getElementById("search_address2").value=""' href='#'>
-            <i class='glyphicon glyphicon-repeat'></i>
-            Reset
-          </a>
-          &nbsp;&nbsp;&nbsp;
-          &nbsp;<button type="button" class="btn btn-info btn-default" data-toggle="modal" data-target="#myModal">Open Directions</button>
           <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
