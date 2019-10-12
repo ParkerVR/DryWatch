@@ -247,13 +247,12 @@
   var add2
   function alert() {
     add1 = (document.getElementById("search_address").value);
-    add2 = (document.getElementById("search_address").value);
-    backend(add1);
-
+    add2 = (document.getElementById("search_address2").value);
+    backend(add1,add2);
   }
   </script>
 
-<script>
+  <script>
   var directions1 = []
   function backend(add1,add2) {
     var request = new XMLHttpRequest();
@@ -286,11 +285,10 @@
       directions1 = directions1.join(" <br> ")
       document.getElementById("modalDirect").innerHTML = directions1;
       request.send();
-    //$("#search").click(back);
-    };
-  }
-  </script>
-
+  //$("#search").click(back);
+};
+}
+</script>
 
   <div class='navbar navbar-default navbar-static-top' >
     <div class='container-fluid'>
@@ -314,20 +312,32 @@
   <div class='container-fluid'>
     <div class='row'>
       <p class="line-1 anim-typewriter">Drought Prediction and Preparation Tool</p>
-      <div class='col-md-4'>
+      <div class='col-md-4' style="float:left";>
         <div class='well'>
           <h4>
-            Location
+            Origin
           </h4>
           <p>
             <input class='form-control' id="search_address" placeholder='Enter an address or an intersection' type='text' />
           </p>
           <br />
+          <h4>
+            Destination
+          </h4>
+          <p>
+            <input class='form-control' id='search_address2' placeholder='Enter an address or an intersection' type='text' />
+          </p>
         </br>
           <a class='btn btn-primary' id='search' onclick='alert()' href='#'>
             <i class='glyphicon glyphicon-search'></i>
             Search
           </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='btn btn-default' id='reset' onclick='document.getElementById("search_address").value=""; document.getElementById("search_address2").value=""' href='#'>
+            <i class='glyphicon glyphicon-repeat'></i>
+            Reset
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          &nbsp;<button type="button" class="btn btn-info btn-default" data-toggle="modal" data-target="#myModal">Open Directions</button>
           <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 
