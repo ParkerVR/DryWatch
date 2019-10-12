@@ -248,12 +248,37 @@
   var add2
   var danger = -1;
   function info(n){
-    if (n == 1)
-      document.getElementById("infoBoxInfo").innerHTML = "RES";
-    if (n == 2)
-      document.getElementById("infoBoxInfo").innerHTML = "FARM";
-    if (n == 3)
-      document.getElementById("infoBoxInfo").innerHTML = "GOV";
+
+    if (n == 1) // res
+      if (danger == -1)
+        document.getElementById("infoBoxInfo").innerHTML = "Please enter a location.";
+      if (danger == 0)
+        document.getElementById("infoBoxInfo").innerHTML = "No action required, monitor progression of drought.";
+      if (danger == 1)
+        document.getElementById("infoBoxInfo").innerHTML = "Reduce water in garden irrigation systems, and be conscious of water usage.";
+      if (danger == 2)
+        document.getElementById("infoBoxInfo").innerHTML = "Limit non-essential water usage. Drought imminent.";
+
+    if (n == 2) // farm 
+      if (danger == -1)
+        document.getElementById("infoBoxInfo").innerHTML = "Please enter a location.";
+      if (danger == 0)
+        document.getElementById("infoBoxInfo").innerHTML = "No action required, monitor progression of drought.";
+      if (danger == 1)
+        document.getElementById("infoBoxInfo").innerHTML = "Prepare for potential implementation of local drought response and mandatory water restrictions.";
+      if (danger == 2)
+        document.getElementById("infoBoxInfo").innerHTML = "Implement conditioning of agriculture to survival in low water resource conditions, and limit non-essential water usage. Drought imminent.";
+
+    if (n == 3) // gov 
+      if (danger == -1)
+        document.getElementById("infoBoxInfo").innerHTML = "Please enter a location.";
+      if (danger == 0)
+        document.getElementById("infoBoxInfo").innerHTML = "No immediate action required; monitor progression of drought.";
+      if (danger == 1)
+        document.getElementById("infoBoxInfo").innerHTML = "Increase communication with public on drought conditions.";
+      if (danger == 2)
+        document.getElementById("infoBoxInfo").innerHTML = "Implement local drought response plan. Drought imminent.";
+
   } 
 
 
@@ -355,19 +380,15 @@
       <p class="line-1 anim-typewriter">A drought prediction tool for water conservation.</p>
       <div class='col-md-4' style="float:left";>
         <div class='well'>
-          <h4>
+          <h2>
             Location
-          </h4>
+          </h2>
           <p>
             <input class='form-control' id="search_address" placeholder='Enter an address or an intersection' type='text' />
           </p>
           <a class='btn btn-primary' id='search' onclick='alert()' href='#'>
             <i class='glyphicon glyphicon-search'></i>
             Search
-          </a>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='btn btn-default' id='reset' onclick='document.getElementById("search_address").value=""; document.getElementById("search_address2").value=""' href='#'>
-              <i class='glyphicon glyphicon-repeat'></i>
-              Reset
           </a>
         </div>
       </div>
@@ -383,9 +404,9 @@
       <div class='col-md-4' style="float:right";>
         <div class='well'>
 
-          <h4>
+          <h2>
             What kind of information are you looking for?
-          </h4>
+          </h2>
           <a class='btn btn-primary' id='res' onclick='info(1)' href='#'>
             Residential 
           </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
@@ -397,9 +418,9 @@
           </a>
           <b></b>
           <div id='infoBox' padding-top="100px">
-            <h1 id='infoBoxInfo'>
+            <h3 id='infoBoxInfo'>
                 
-            </h2>
+            </h3>
           </div>
         </div>
       </div>
