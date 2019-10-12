@@ -320,9 +320,42 @@
           <p>
             <input class='form-control' id="search_address" placeholder='Enter an address or an intersection' type='text' />
           </p>
+          <br />
+          <h4>
+            Destination
+          </h4>
+          <p>
+            <input class='form-control' id='search_address2' placeholder='Enter an address or an intersection' type='text' />
+          </p>
+        </br>
           <a class='btn btn-primary' id='search' onclick='alert()' href='#'>
             <i class='glyphicon glyphicon-search'></i>
             Search
+          </a>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class='btn btn-default' id='reset' onclick='document.getElementById("search_address").value=""; document.getElementById("search_address2").value=""' href='#'>
+            <i class='glyphicon glyphicon-repeat'></i>
+            Reset
+          </a>
+          &nbsp;&nbsp;&nbsp;
+          &nbsp;<button type="button" class="btn btn-info btn-default" data-toggle="modal" data-target="#myModal">Open Directions</button>
+          <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Biking Directions</h4>
+        </div>
+        <div class="modal-body" id = "modalDirect">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
           </a>
         </div>
       </div>
